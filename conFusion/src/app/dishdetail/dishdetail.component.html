@@ -4,7 +4,7 @@
     fxLayout.xs="column"
     fxLayoutAlign.gt-md="space-around center"
     fxLayoutGap="10px" 
-    fxLayoutGap.xs="0">
+    fxLayoutGap.xs="0" >
 
   <div fxFlex="100">
     <div>
@@ -13,8 +13,8 @@
     </div>
   </div>
 
-  <div fxFlex="40">
-    <mat-card>
+  <div fxFlex="40" >
+    <mat-card *ngIf="dish">
       <mat-card-header>
         <mat-card-title>
           <h3>{{dish.name | uppercase}}</h3>
@@ -31,17 +31,25 @@
         <button mat-button>SHARE</button>
       </mat-card-actions>
     </mat-card>
+    <mat-card [hidden]='dish'>
+      <mat-card-content>
+        <div [hidden]='dish'>
+            <mat-spinner></mat-spinner>
+            <h4>Loading . . . Please Wait</h4>
+          </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 
   <div fxFlex="40">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          <h3>{{dish.name | uppercase}}</h3>
+          <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-list fxFlex>
+        <mat-list fxFlex *ngIf="dish.comments">
           <mat-list-item *ngFor="let c of dish.comments">
               <p matLine>{{ c.comment }}</p>
               <p matLine>{{ c.rating }} Starts</p>
