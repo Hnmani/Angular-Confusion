@@ -34,6 +34,7 @@ import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import { LoginComponent } from './login/login.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
+import { MatSliderModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
     MatSelectModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSliderModule
   ],
   providers: [
     DishService,
