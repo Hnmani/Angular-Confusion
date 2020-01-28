@@ -15,7 +15,7 @@
           <h3>{{dish.name | uppercase}}</h3>
         </mat-card-title>
       </mat-card-header>
-      <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+      <img mat-card-image src={{baseURL+dish.image}} alt={{dish.name}}>
       <mat-card-content>
         <p>{{dish.description}}
         </p>
@@ -55,12 +55,7 @@
             <p matLine>{{ c.rating }} Starts</p>
             <p matLine>--{{c.author}}  {{c.date | date}}</p>
         </mat-list-item>
-        <mat-list-item *ngIf="comment">
-          <p matLine>{{comment.comment}}</p>
-          <p matLine>{{comment.rating}} Stars</p>
-          <p matLine>--{{comment.author}}  {{comment.date | date}} </p>
-      </mat-list-item>
-        <mat-list-item *ngIf="commentForm.value.author">
+        <mat-list-item *ngIf="commentForm.valid">
             <p matLine>{{commentForm.value.comment}}</p>
             <p matLine>{{commentForm.value.rating}} Stars</p>
             <p matLine>--{{commentForm.value.author}}</p>
@@ -92,7 +87,7 @@
           <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
           </mat-form-field>
       </p>
-      <button type='submit' mat-button class='background-primary text-floral-white'>Submit</button>
+      <button type='submit' mat-button class='background-primary text-floral-white' [disabled]='commentForm.invalid'>Submit</button>
       </form>
     </div>
   </div>
